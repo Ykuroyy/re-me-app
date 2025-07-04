@@ -1,54 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>今日の良かったこと - ReMeApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日の良かったこと</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: none;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #8b5a8c;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(139, 90, 140, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #8b5a8c;
+            font-weight: bold;
+        }
+        
+        textarea, input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e6d7e6;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        textarea:focus, input:focus {
+            outline: none;
+            border-color: #8b5a8c;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #8b5a8c 0%, #a67ca6 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .record {
+            background: #f9f4f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #8b5a8c;
+        }
+        
+        .date {
+            color: #8b5a8c;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .nav-links a {
+            color: #8b5a8c;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .error {
+            color: #d63384;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* 気分選択のスタイル */
+        .mood-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .mood-option {
+            text-align: center;
+        }
+        
+        .mood-radio {
+            display: none;
+        }
+        
+        .mood-label {
+            display: block;
+            padding: 10px 8px;
+            border: 2px solid #e6d7e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .mood-label:hover {
+            border-color: #8b5a8c;
+            background-color: #f9f4f9;
+        }
+        
+        .mood-radio:checked + .mood-label {
+            border-color: #8b5a8c;
+            background-color: #f0e6ff;
+        }
+        
+        .mood-emoji {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .mood-text {
+            display: block;
+            font-size: 11px;
+            color: #8b5a8c;
+        }
+        
+        /* 記録表示の追加スタイル */
+        .mood-display {
+            margin-bottom: 8px;
+        }
+        
+        .mood-display .mood-emoji {
+            display: inline;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+        
+        .mood-display .mood-text {
+            display: inline;
+            font-size: 12px;
+            color: #8b5a8c;
+        }
+        
+        .content {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* フラッシュメッセージ */
+        .notice {
+            color: #155724;
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .mood-selector {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
   </head>
 
-  <body class="bg-gradient-to-br from-pink-50 to-purple-50 min-h-screen">
-    <!-- ナビゲーションヘッダー -->
-    <nav class="bg-white shadow-lg border-b-4 border-pink-200">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-          <div class="flex items-center space-x-4">
-            <h1 class="text-2xl font-bold text-pink-600">🌸 ReMeApp</h1>
-            <span class="text-gray-600 text-sm">今日の良かったことを記録</span>
-          </div>
-          <div class="flex items-center space-x-4">
-            <%= link_to "ホーム", root_path, class: "text-gray-700 hover:text-pink-600 transition-colors" %>
-            <%= link_to "新しい思い出", new_good_memory_path, class: "bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg transition-colors" %>
-          </div>
-        </div>
-      </div>
-    </nav>
-
+  <body>
+    <div class="theme-switcher" style="text-align:center; margin-bottom: 16px;">
+      <button class="theme-btn" data-theme="pink" style="background:linear-gradient(135deg,#ffeef8,#f0e6ff);color:#8b5a8c;">ピンク</button>
+      <button class="theme-btn" data-theme="purple" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9);color:#6a1b9a;">パープル</button>
+      <button class="theme-btn" data-theme="green" style="background:linear-gradient(135deg,#e0f7fa,#b2dfdb);color:#00695c;">グリーン</button>
+    </div>
+    <div class="header">
+        <h1>🌸 今日の良かったこと 🌸</h1>
+        <p>毎日の小さな幸せを記録しましょう</p>
+    </div>
+    
     <!-- フラッシュメッセージ -->
     <% if notice %>
-      <div class="max-w-6xl mx-auto px-4 mt-4">
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
-          <%= notice %>
+        <div class="notice">
+            <%= notice %>
         </div>
-      </div>
     <% end %>
-
-    <main class="max-w-6xl mx-auto px-4 py-8">
-      <%= yield %>
-    </main>
-
-    <!-- フッター -->
-    <footer class="bg-white border-t-4 border-pink-200 mt-16">
-      <div class="max-w-6xl mx-auto px-4 py-6">
-        <div class="text-center text-gray-600">
-          <p>🌸 毎日の小さな幸せを大切に 🌸</p>
-          <p class="text-sm mt-2">ReMeApp - 今日の良かったことを記録するアプリ</p>
-        </div>
-      </div>
-    </footer>
+    
+    <div class="nav-links">
+        <%= link_to "ホーム", root_path %>
+        <%= link_to "月別で見る", months_path %>
+    </div>
+    
+    <%= yield %>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function applyTheme(theme) {
+        let bg, color;
+        if (theme === 'pink') {
+          bg = 'linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%)';
+          color = '#8b5a8c';
+        } else if (theme === 'purple') {
+          bg = 'linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%)';
+          color = '#6a1b9a';
+        } else if (theme === 'green') {
+          bg = 'linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%)';
+          color = '#00695c';
+        }
+        document.body.style.background = bg;
+        document.body.style.color = color;
+        localStorage.setItem('theme', theme);
+      }
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          applyTheme(this.dataset.theme);
+        });
+      });
+      const saved = localStorage.getItem('theme') || 'pink';
+      applyTheme(saved);
+    });
+    </script>
   </body>
 </html>

@@ -1,0 +1,20 @@
+<div class="card">
+    <h2>月別の記録</h2>
+    
+    <% if @months && @months.length > 0 %>
+        <% @months.each do |month_data| %>
+            <div class="record">
+                <%= link_to monthly_memories_path(month_data[:year], month_data[:month]), 
+                    style: "text-decoration: none; color: #8b5a8c;" do %>
+                    <strong><%= month_data[:year] %>年<%= month_data[:month] %>月</strong>
+                <% end %>
+            </div>
+        <% end %>
+    <% else %>
+        <p>まだ記録がありません。今日から始めてみましょう！</p>
+    <% end %>
+</div>
+
+<div class="nav-links">
+    <%= link_to "← ホームに戻る", root_path %>
+</div> 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   # 月別表示のルート
   get 'monthly/:year/:month', to: 'good_memories#monthly', as: :monthly_memories
+  get 'months', to: 'good_memories#months', as: :months
   
   # 良い思い出のリソース
   resources :good_memories

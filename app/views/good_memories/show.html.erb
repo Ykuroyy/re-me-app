@@ -1,66 +1,23 @@
-<div class="max-w-3xl mx-auto">
-  <div class="bg-white rounded-2xl shadow-lg p-8 border-4 border-pink-100">
-    <!-- ヘッダー -->
-    <div class="flex justify-between items-start mb-8">
-      <div>
-        <h1 class="text-3xl font-bold text-pink-600 mb-2">思い出の詳細</h1>
-        <p class="text-gray-600"><%= @good_memory.date.strftime("%Y年%m月%d日") %>の思い出</p>
-      </div>
-      <div class="flex space-x-3">
-        <%= link_to edit_good_memory_path(@good_memory), class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors" do %>
-          <span class="mr-1">✏️</span>編集
-        <% end %>
-        <%= link_to good_memory_path(@good_memory), method: :delete, data: { confirm: "この思い出を削除しますか？" }, 
-            class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors" do %>
-          <span class="mr-1">🗑️</span>削除
-        <% end %>
-      </div>
-    </div>
-
-    <!-- 気分表示 -->
-    <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-6 mb-8 border-2 border-pink-200">
-      <div class="flex items-center justify-center space-x-4">
-        <span class="text-4xl"><%= @good_memory.mood_emoji %></span>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-800"><%= @good_memory.mood_text %></div>
-          <div class="text-gray-600">その日の気分</div>
+<div class="card">
+    <h2>思い出の詳細</h2>
+    <p style="text-align: center; color: #8b5a8c; margin-bottom: 20px;"><%= @good_memory.date.strftime("%Y年%m月%d日") %>の思い出</p>
+    
+    <div class="record">
+        <div class="date"><%= @good_memory.date.strftime("%Y年%m月%d日") %></div>
+        <div class="mood-display">
+            <span class="mood-emoji"><%= @good_memory.mood_emoji %></span>
+            <span class="mood-text"><%= @good_memory.mood_text %></span>
         </div>
-      </div>
+        <div class="content"><%= @good_memory.content %></div>
     </div>
+    
+    <div style="text-align: center; margin: 20px 0;">
+        <%= link_to "編集", edit_good_memory_path(@good_memory), class: "btn", style: "width: auto; margin: 0 10px;" %>
+        <%= link_to "削除", good_memory_path(@good_memory), method: :delete, data: { confirm: "この思い出を削除しますか？" }, 
+            class: "btn", style: "width: auto; margin: 0 10px; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);" %>
+    </div>
+</div>
 
-    <!-- 思い出の内容 -->
-    <div class="bg-white border-2 border-pink-200 rounded-xl p-6 mb-8">
-      <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-        <span class="text-pink-500 mr-2">💭</span>
-        今日の良かったこと
-      </h2>
-      <div class="bg-gray-50 rounded-lg p-6">
-        <p class="text-gray-700 leading-relaxed text-lg whitespace-pre-wrap"><%= @good_memory.content %></p>
-      </div>
-    </div>
-
-    <!-- ナビゲーション -->
-    <div class="flex justify-between items-center pt-6 border-t-2 border-pink-100">
-      <div class="flex space-x-4">
-        <%= link_to "← 一覧に戻る", good_memories_path, class: "text-pink-600 hover:text-pink-800 font-semibold" %>
-      </div>
-      <div class="flex space-x-4">
-        <% if @good_memory.previous %>
-          <%= link_to "← 前の思い出", @good_memory.previous, class: "text-blue-600 hover:text-blue-800" %>
-        <% end %>
-        <% if @good_memory.next %>
-          <%= link_to "次の思い出 →", @good_memory.next, class: "text-blue-600 hover:text-blue-800" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <!-- 励ましメッセージ -->
-  <div class="mt-8 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200">
-    <div class="text-center">
-      <div class="text-3xl mb-3">🌟</div>
-      <h3 class="text-lg font-semibold text-gray-800 mb-2">今日も素敵な一日でしたね</h3>
-      <p class="text-gray-600">小さな幸せを大切にすることで、心が豊かになります。明日も素敵な一日になりますように！</p>
-    </div>
-  </div>
+<div class="nav-links">
+    <%= link_to "← ホームに戻る", root_path %>
 </div>
