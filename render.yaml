@@ -16,4 +16,6 @@ services:
           name: aroma-app-db
           property: connectionString
       - key: RAILS_MASTER_KEY
-        sync: false 
+        sync: false
+      - key: RAILS_ENV
+        value: production 

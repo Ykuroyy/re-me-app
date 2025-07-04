@@ -109,3 +109,23 @@ Migrating to CreateGoodMemories (20250704115728)
   [1m[36mGoodMemory Create (11.2ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの音楽を聴いて、心が癒されました。"], ["date", "2025-06-05"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.345648"], ["updated_at", "2025-07-04 12:02:55.345648"]]
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mGoodMemory Count (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories"[0m
+Started GET "/" for ::1 at 2025-07-04 21:21:49 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GoodMemoriesController#index as HTML
+  [1m[36mGoodMemory Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories"[0m
+  ↳ app/controllers/good_memories_controller.rb:6:in `index'
+  [1m[36mGoodMemory Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories" WHERE "good_memories"."date" BETWEEN $1 AND $2[0m  [["date", "2025-07-01"], ["date", "2025-07-31"]]
+  ↳ app/controllers/good_memories_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering good_memories/index.html.erb within layouts/application
+  [1m[36mGoodMemory Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories" WHERE "good_memories"."mood" IN ($1, $2)[0m  [["mood", 4], ["mood", 5]]
+  ↳ app/views/good_memories/index.html.erb:23
+  [1m[36mGoodMemory Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "good_memories" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/good_memories/index.html.erb:36
+  [1m[36mGoodMemory Load (0.5ms)[0m  [1m[34mSELECT "good_memories".* FROM "good_memories" ORDER BY "good_memories"."date" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/good_memories/index.html.erb:38
+  Rendered good_memories/index.html.erb within layouts/application (Duration: 23.0ms | Allocations: 9425)
+  Rendered layout layouts/application.html.erb (Duration: 131.6ms | Allocations: 110780)
+Completed 200 OK in 182ms (Views: 130.5ms | ActiveRecord: 14.5ms | Allocations: 131009)
+
+
