@@ -1,0 +1,111 @@
+  [1m[35m (140.3ms)[0m  [1m[35mCREATE DATABASE "re_me_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (74.2ms)[0m  [1m[35mCREATE DATABASE "re_me_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(523066883715170655)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-04 11:57:48.480246', '2025-07-04 11:57:48.480248') RETURNING "key"[0m
+Migrating to CreateGoodMemories (20250704115728)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "good_memories" ("id" bigserial primary key, "content" text, "date" date, "mood" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250704115728') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(523066883715170655)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (1.5ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "家族と笑顔で過ごせた一日でした。夕食の時間が特に楽しかったです。"], ["date", "2025-07-04"], ["mood", 5], ["created_at", "2025-07-04 12:02:55.295066"], ["updated_at", "2025-07-04 12:02:55.295066"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達と電話で話して、久しぶりに笑い合えました。"], ["date", "2025-07-03"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.297916"], ["updated_at", "2025-07-04 12:02:55.297916"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.5ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "音楽を聴きながら、リラックスした時間を過ごせました。"], ["date", "2025-07-02"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.299198"], ["updated_at", "2025-07-04 12:02:55.299198"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "天気が良くて、散歩が気持ちよかったです。"], ["date", "2025-07-01"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.300646"], ["updated_at", "2025-07-04 12:02:55.300646"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.5ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達から素敵なプレゼントをもらいました。"], ["date", "2025-06-30"], ["mood", 5], ["created_at", "2025-07-04 12:02:55.302024"], ["updated_at", "2025-07-04 12:02:55.302024"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.3ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "朝の散歩で、きれいな花を見つけました。"], ["date", "2025-06-29"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.303646"], ["updated_at", "2025-07-04 12:02:55.303646"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "美味しいお茶を飲みながら、ゆっくりとした時間を過ごせました。"], ["date", "2025-06-28"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.304652"], ["updated_at", "2025-07-04 12:02:55.304652"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りのドラマを見て、感動しました。"], ["date", "2025-06-27"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.305733"], ["updated_at", "2025-07-04 12:02:55.305733"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.5ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "家族と一緒に映画を見て、楽しい時間を過ごしました。"], ["date", "2025-06-26"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.306804"], ["updated_at", "2025-07-04 12:02:55.306804"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの音楽を聴いて、心が癒されました。"], ["date", "2025-06-25"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.307967"], ["updated_at", "2025-07-04 12:02:55.307967"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.5ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "新しいお店を発見して、美味しい料理を食べました。"], ["date", "2025-06-24"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.309358"], ["updated_at", "2025-07-04 12:02:55.309358"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "新しいお店を発見して、美味しい料理を食べました。"], ["date", "2025-06-23"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.310603"], ["updated_at", "2025-07-04 12:02:55.310603"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (3.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達とランチをして、楽しい会話ができました。"], ["date", "2025-06-22"], ["mood", 1], ["created_at", "2025-07-04 12:02:55.311711"], ["updated_at", "2025-07-04 12:02:55.311711"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "家族と一緒に映画を見て、楽しい時間を過ごしました。"], ["date", "2025-06-21"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.316242"], ["updated_at", "2025-07-04 12:02:55.316242"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "新しい本を読んで、新しい発見がありました。"], ["date", "2025-06-20"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.317866"], ["updated_at", "2025-07-04 12:02:55.317866"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.7ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達から素敵なプレゼントをもらいました。"], ["date", "2025-06-19"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.318909"], ["updated_at", "2025-07-04 12:02:55.318909"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達から励ましのメッセージをもらって、心が温かくなりました。"], ["date", "2025-06-18"], ["mood", 5], ["created_at", "2025-07-04 12:02:55.320289"], ["updated_at", "2025-07-04 12:02:55.320289"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの音楽を聴いて、心が癒されました。"], ["date", "2025-06-17"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.321425"], ["updated_at", "2025-07-04 12:02:55.321425"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.5ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "家族と一緒に写真を撮って、良い思い出ができました。"], ["date", "2025-06-16"], ["mood", 5], ["created_at", "2025-07-04 12:02:55.322396"], ["updated_at", "2025-07-04 12:02:55.322396"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達から励ましのメッセージをもらって、心が温かくなりました。"], ["date", "2025-06-15"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.323755"], ["updated_at", "2025-07-04 12:02:55.323755"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達とランチをして、楽しい会話ができました。"], ["date", "2025-06-14"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.324953"], ["updated_at", "2025-07-04 12:02:55.324953"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの音楽を聴いて、心が癒されました。"], ["date", "2025-06-13"], ["mood", 1], ["created_at", "2025-07-04 12:02:55.326267"], ["updated_at", "2025-07-04 12:02:55.326267"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの音楽を聴いて、心が癒されました。"], ["date", "2025-06-12"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.327334"], ["updated_at", "2025-07-04 12:02:55.327334"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達と電話で話して、久しぶりに笑い合えました。"], ["date", "2025-06-11"], ["mood", 4], ["created_at", "2025-07-04 12:02:55.328533"], ["updated_at", "2025-07-04 12:02:55.328533"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.4ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "家族と一緒にゲームをして、笑い合えました。"], ["date", "2025-06-10"], ["mood", 3], ["created_at", "2025-07-04 12:02:55.329701"], ["updated_at", "2025-07-04 12:02:55.329701"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "友達から励ましのメッセージをもらって、心が温かくなりました。"], ["date", "2025-06-09"], ["mood", 1], ["created_at", "2025-07-04 12:02:55.330956"], ["updated_at", "2025-07-04 12:02:55.330956"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの本を読んで、新しい世界を発見しました。"], ["date", "2025-06-08"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.332394"], ["updated_at", "2025-07-04 12:02:55.332394"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (0.6ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "美味しいお茶を飲みながら、ゆっくりとした時間を過ごせました。"], ["date", "2025-06-07"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.338477"], ["updated_at", "2025-07-04 12:02:55.338477"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (2.0ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "新しいお店を発見して、美味しい料理を食べました。"], ["date", "2025-06-06"], ["mood", 5], ["created_at", "2025-07-04 12:02:55.340053"], ["updated_at", "2025-07-04 12:02:55.340053"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGoodMemory Create (11.2ms)[0m  [1m[32mINSERT INTO "good_memories" ("content", "date", "mood", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "お気に入りの音楽を聴いて、心が癒されました。"], ["date", "2025-06-05"], ["mood", 2], ["created_at", "2025-07-04 12:02:55.345648"], ["updated_at", "2025-07-04 12:02:55.345648"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGoodMemory Count (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories"[0m

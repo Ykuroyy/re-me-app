@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>今日の良かったこと - ReMeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gradient-to-br from-pink-50 to-purple-50 min-h-screen">
+    <!-- ナビゲーションヘッダー -->
+    <nav class="bg-white shadow-lg border-b-4 border-pink-200">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4">
+            <h1 class="text-2xl font-bold text-pink-600">🌸 ReMeApp</h1>
+            <span class="text-gray-600 text-sm">今日の良かったことを記録</span>
+          </div>
+          <div class="flex items-center space-x-4">
+            <%= link_to "ホーム", root_path, class: "text-gray-700 hover:text-pink-600 transition-colors" %>
+            <%= link_to "新しい思い出", new_good_memory_path, class: "bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg transition-colors" %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- フラッシュメッセージ -->
+    <% if notice %>
+      <div class="max-w-6xl mx-auto px-4 mt-4">
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <%= yield %>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-white border-t-4 border-pink-200 mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-6">
+        <div class="text-center text-gray-600">
+          <p>🌸 毎日の小さな幸せを大切に 🌸</p>
+          <p class="text-sm mt-2">ReMeApp - 今日の良かったことを記録するアプリ</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
