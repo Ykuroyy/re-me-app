@@ -11,6 +11,15 @@ class GoodMemoriesController < ApplicationController
     @good_memory = @today_record || GoodMemory.new(date: Date.current)
   end
 
+  def edit_today
+    @today_record = GoodMemory.find_by(date: Date.current)
+    if @today_record
+      redirect_to edit_good_memory_path(@today_record)
+    else
+      redirect_to root_path, notice: '今日の記録がまだありません。'
+    end
+  end
+
   def show
   end
 

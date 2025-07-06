@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'monthly/:year/:month', to: 'good_memories#monthly', as: :monthly_memories
   get 'months', to: 'good_memories#months', as: :months
   
+  # 今日の記録を編集
+  get 'edit_today', to: 'good_memories#edit_today', as: :edit_today
+  
   # 良い思い出のリソース
   resources :good_memories
   

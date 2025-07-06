@@ -111,6 +111,18 @@
   color: #6b7280;
 }
 
+/* フォームアクション */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-actions .btn {
+  flex: 1;
+  margin-top: 0;
+}
+
 /* ボタン */
 .btn {
   background: #ec4899;
@@ -122,12 +134,31 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 100%;
-  margin-top: 20px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn:hover {
   background: #db2777;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: #8b5cf6;
+}
+
+.btn-secondary:hover {
+  background: #7c3aed;
+}
+
+.btn-danger {
+  background: #ef4444;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
 }
 
 /* 記録表示 */
@@ -187,5 +218,13 @@
   
   .mood-selector {
     grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
   }
 }
