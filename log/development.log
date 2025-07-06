@@ -584,3 +584,38 @@ Processing by GoodMemoriesController#index as HTML
 Completed 200 OK in 13ms (Views: 6.9ms | ActiveRecord: 1.4ms | Allocations: 5573)
 
 
+Started GET "/" for ::1 at 2025-07-06 20:33:15 +0900
+Processing by GoodMemoriesController#index as HTML
+  [1m[36mGoodMemory Count (22.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories"[0m
+  ↳ app/controllers/good_memories_controller.rb:6:in `index'
+  [1m[36mGoodMemory Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories" WHERE "good_memories"."date" BETWEEN $1 AND $2[0m  [["date", "2025-07-01"], ["date", "2025-07-31"]]
+  ↳ app/controllers/good_memories_controller.rb:7:in `index'
+  [1m[36mGoodMemory Load (0.1ms)[0m  [1m[34mSELECT "good_memories".* FROM "good_memories" WHERE "good_memories"."date" = $1 LIMIT $2[0m  [["date", "2025-07-06"], ["LIMIT", 1]]
+  ↳ app/controllers/good_memories_controller.rb:10:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering good_memories/index.html.erb within layouts/application
+  [1m[36mGoodMemory Load (0.3ms)[0m  [1m[34mSELECT "good_memories".* FROM "good_memories" ORDER BY "good_memories"."date" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/good_memories/index.html.erb:39
+  Rendered good_memories/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2258)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3912)
+Completed 200 OK in 38ms (Views: 8.6ms | ActiveRecord: 35.5ms | Allocations: 8377)
+
+
+Started GET "/" for ::1 at 2025-07-06 20:33:17 +0900
+Processing by GoodMemoriesController#index as HTML
+  [1m[36mGoodMemory Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories"[0m
+  ↳ app/controllers/good_memories_controller.rb:6:in `index'
+  [1m[36mGoodMemory Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "good_memories" WHERE "good_memories"."date" BETWEEN $1 AND $2[0m  [["date", "2025-07-01"], ["date", "2025-07-31"]]
+  ↳ app/controllers/good_memories_controller.rb:7:in `index'
+  [1m[36mGoodMemory Load (0.1ms)[0m  [1m[34mSELECT "good_memories".* FROM "good_memories" WHERE "good_memories"."date" = $1 LIMIT $2[0m  [["date", "2025-07-06"], ["LIMIT", 1]]
+  ↳ app/controllers/good_memories_controller.rb:10:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering good_memories/index.html.erb within layouts/application
+  [1m[36mGoodMemory Load (0.1ms)[0m  [1m[34mSELECT "good_memories".* FROM "good_memories" ORDER BY "good_memories"."date" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  ↳ app/views/good_memories/index.html.erb:39
+  Rendered good_memories/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2245)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 3887)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.7ms | Allocations: 5564)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
