@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "theme_fallback" %>
     <style>
         body {
             font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
@@ -205,11 +206,11 @@
     </style>
   </head>
 
-  <body>
+  <body data-controller="theme">
     <div class="theme-switcher" style="text-align:center; margin-bottom: 16px;">
-      <button class="theme-btn" data-theme="pink" style="background:linear-gradient(135deg,#ffeef8,#f0e6ff);color:#8b5a8c;">ピンク</button>
-      <button class="theme-btn" data-theme="purple" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9);color:#6a1b9a;">パープル</button>
-      <button class="theme-btn" data-theme="green" style="background:linear-gradient(135deg,#e0f7fa,#b2dfdb);color:#00695c;">グリーン</button>
+      <button class="theme-btn" data-theme="pink" data-action="click->theme#switch" style="background:linear-gradient(135deg,#ffeef8,#f0e6ff);color:#8b5a8c;border:none;padding:8px 16px;margin:0 4px;border-radius:20px;cursor:pointer;font-size:14px;">ピンク</button>
+      <button class="theme-btn" data-theme="purple" data-action="click->theme#switch" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9);color:#6a1b9a;border:none;padding:8px 16px;margin:0 4px;border-radius:20px;cursor:pointer;font-size:14px;">パープル</button>
+      <button class="theme-btn" data-theme="green" data-action="click->theme#switch" style="background:linear-gradient(135deg,#e0f7fa,#b2dfdb);color:#00695c;border:none;padding:8px 16px;margin:0 4px;border-radius:20px;cursor:pointer;font-size:14px;">グリーン</button>
     </div>
     <div class="header">
         <h1>🌸 今日の良かったこと 🌸</h1>
@@ -229,32 +230,5 @@
     </div>
     
     <%= yield %>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      function applyTheme(theme) {
-        let bg, color;
-        if (theme === 'pink') {
-          bg = 'linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%)';
-          color = '#8b5a8c';
-        } else if (theme === 'purple') {
-          bg = 'linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%)';
-          color = '#6a1b9a';
-        } else if (theme === 'green') {
-          bg = 'linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%)';
-          color = '#00695c';
-        }
-        document.body.style.background = bg;
-        document.body.style.color = color;
-        localStorage.setItem('theme', theme);
-      }
-      document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          applyTheme(this.dataset.theme);
-        });
-      });
-      const saved = localStorage.getItem('theme') || 'pink';
-      applyTheme(saved);
-    });
-    </script>
   </body>
 </html>
