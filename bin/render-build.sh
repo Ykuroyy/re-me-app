@@ -7,6 +7,7 @@ echo "Starting build process..."
 # Install dependencies
 echo "Installing dependencies..."
 bundle install
+bundle exec rails db:migrate
 
 # Precompile assets
 echo "Precompiling assets..."
