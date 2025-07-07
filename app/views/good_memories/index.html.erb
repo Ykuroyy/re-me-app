@@ -47,7 +47,13 @@
     <h2>最近の記録</h2>
     <% @good_memories.each do |memory| %>
         <div class="record">
-            <div class="date"><%= memory.date.strftime("%Y年%m月%d日") %></div>
+            <div class="record-header">
+                <div class="date"><%= memory.date.strftime("%Y年%m月%d日") %></div>
+                <div class="record-actions">
+                    <%= link_to '編集', edit_good_memory_path(memory), class: "btn-small btn-edit" %>
+                    <%= button_to '削除', good_memory_path(memory), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn-small btn-delete" %>
+                </div>
+            </div>
             <div class="mood-display">
                 <span class="mood-emoji"><%= memory.mood_emoji %></span>
                 <span class="mood-text"><%= memory.mood_text %></span>

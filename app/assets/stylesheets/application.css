@@ -171,10 +171,51 @@
   border-bottom: none;
 }
 
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 .record .date {
   font-weight: 600;
   color: #ec4899;
-  margin-bottom: 8px;
+}
+
+.record-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-small {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-edit {
+  background: #8b5cf6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #7c3aed;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
 }
 
 .record .mood-display {
@@ -226,5 +267,16 @@
   
   .form-actions .btn {
     width: 100%;
+  }
+  
+  .record-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .record-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 }
